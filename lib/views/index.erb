@@ -1,0 +1,31 @@
+<% if @name %>
+<h2>Hello, <%= @name %>!</h2>
+<% end %>
+
+<form action="/" method="post">
+	<input type="text" name="name" />
+	<button value="submit"></button>
+</form>
+
+<form action="/play" method="post">
+	<button name="move" value="rock">Rock</button>
+	<button name="move" value="paper">Paper</button>
+	<button name="move" value="scissors">Scissors</button>
+</form>
+
+<% if @game %>
+
+<div>
+	<p>You played: <%= @game.last_player_move %></p>
+	<p>The computer played: <%= @game.last_computer_move %></p>
+</div>
+
+<div>
+    <% if @game.winner == :computer %>
+	<p>Computer wins!</p>
+	<% else %>
+	<p>You win!</p>
+	<% end %>
+</div>
+
+<% end %>
